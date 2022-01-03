@@ -72,8 +72,12 @@ public class LineStringTest {
 	
 	@Test
 	public void testIsEmpty(){
-		
-		LineString emptyLS = new LineString();
+
+		Coordinate cEmpty = new Coordinate();
+		Point pEpmty = new Point(cEmpty);
+		List ptsEmpty = new ArrayList<Point>();
+		ptsEmpty.add(pEpmty);
+		LineString emptyLS = new LineString(ptsEmpty);
 		
 		Assert.assertEquals(true,emptyLS.isEmpty());
 		

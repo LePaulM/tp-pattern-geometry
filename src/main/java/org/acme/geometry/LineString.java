@@ -29,11 +29,18 @@ public class LineString implements Geometry {
 
 	@Override
 	public boolean isEmpty() {
-		if (points == null) {
-			return true;
-		} else {
-			return false;
+		boolean isEmpty = true;
+		for (Point point : this.points) {
+			if (point.isEmpty() == true) {
+				isEmpty = true;
+				break;
+			} else {
+				isEmpty = false;
+			}
 		}
+		
+		return isEmpty;
+
 	}
 
 	@Override

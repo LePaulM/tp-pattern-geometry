@@ -91,7 +91,7 @@ public class LineStringTest {
 	
 	@Test
 	public void testTranslate(){
-List pts = new ArrayList<Point>();
+			List pts = new ArrayList<Point>();
 		
 		pts.add(p0);
 		pts.add(p1);
@@ -102,5 +102,23 @@ List pts = new ArrayList<Point>();
 		lS.translate(1, 1);
 		
 		Assert.assertEquals(lS.isEmpty(),false);
+	}
+	
+	@Test
+	public void testPrototype(){
+		List pts = new ArrayList<Point>();
+		
+		pts.add(p0);
+		pts.add(p1);
+		pts.add(p2);
+		pts.add(p3);
+		
+		LineString lS = new LineString(pts);
+		
+		Geometry copy = lS.clone();
+		
+		lS.translate(1, 1);
+		copy.translate(1, 1);
+		Assert.assertEquals(lS,copy);
 	}
 }

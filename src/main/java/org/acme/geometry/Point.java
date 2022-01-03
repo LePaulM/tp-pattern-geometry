@@ -35,4 +35,9 @@ public class Point implements Geometry {
 				this.coordinate.getY()+dy);
 	}
 	
+	@Override
+	public Point clone() {
+		return this;
+	}
+	
 }

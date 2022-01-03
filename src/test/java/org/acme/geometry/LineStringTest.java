@@ -88,4 +88,19 @@ public class LineStringTest {
 		
 		Assert.assertEquals(false,fullLS.isEmpty());
 	}
+	
+	@Test
+	public void testTranslate(){
+List pts = new ArrayList<Point>();
+		
+		pts.add(p0);
+		pts.add(p1);
+		pts.add(p2);
+		pts.add(p3);
+		
+		LineString lS = new LineString(pts);
+		lS.translate(1, 1);
+		
+		Assert.assertEquals(lS.isEmpty(),false);
+	}
 }

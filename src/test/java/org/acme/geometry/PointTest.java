@@ -14,7 +14,7 @@ public class PointTest {
 	
 	@Test
 	public void testConstructor(){
-		Coordinate c = new Coordinate(0.3,1.8);
+		Coordinate c = new Coordinate(0.0,0.0);
 		Point p = new Point(c);
 		Assert.assertEquals("Point", p.getType());
 	}
@@ -32,12 +32,9 @@ public class PointTest {
 	
 	@Test
 	public void testTranslate(){
-		Coordinate cEmpty = new Coordinate();
-		Point pEpmty = new Point(cEmpty);
-		Assert.assertEquals(pEpmty.isEmpty(),true);
-		
-		Coordinate cFull = new Coordinate(0.0,0.0);
-		Point pFull = new Point(cFull);
-		Assert.assertEquals(pFull.isEmpty(),false);
+		Coordinate c = new Coordinate(0.0,0.0);
+		Point p = new Point(c);
+		p.translate(1, 1);
+		Assert.assertEquals(p.isEmpty(),false);
 	}
 }

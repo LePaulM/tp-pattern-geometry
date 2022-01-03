@@ -24,19 +24,16 @@ public class LineString implements Geometry {
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
 		return "LineString";
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
 		if (points == null) {
 			return true;
 		} else {
 			return false;
 		}
-		
 	}
 
 	@Override

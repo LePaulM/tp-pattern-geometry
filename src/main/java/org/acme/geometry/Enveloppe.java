@@ -1,8 +1,8 @@
 package org.acme.geometry;
 
 public class Enveloppe {
-	private Coordinate bottomLeft;
-	private Coordinate topRight;
+	private Coordinate bottomLeft = new Coordinate();
+	private Coordinate topRight= new Coordinate();
 	
 	
 	public Enveloppe() {
@@ -16,7 +16,7 @@ public class Enveloppe {
 	}
 	
 	public boolean isEmpty() {
-		if (bottomLeft == null || bottomLeft == null) {
+		if (bottomLeft.isEmpty() || topRight.isEmpty()) {
 			return true;
 		} else {
 			return false;

@@ -2,6 +2,11 @@ package org.acme.geometry;
 
 public class WktWriter {
 	
+	public WktWriter() {
+		super();
+	}
+
+	
 	public String write(Geometry geometry) {
 		String result = "";
 		
@@ -18,6 +23,7 @@ public class WktWriter {
 				result += lineString.getPointN(i).getCoordinate().getX() + " " 
 					    + lineString.getPointN(i).getCoordinate().getY() + ",";
 			}
+			result = result.substring(0, result.length() - 1);  
 			result += ")";
 			
 		}else{

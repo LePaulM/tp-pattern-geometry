@@ -45,14 +45,26 @@ public class LineString implements Geometry {
 
 	@Override
 	public void translate(double dx, double dy) {
-		for(int i=0;i<this.points.size();i++) {
-			points.get(i).translate(dx,dy);
+		for(Point point : points) {
+			point.translate(dx,dy);
 		}
 	}
 	
 	@Override
 	public LineString clone() {
 		return this;
+	}
+
+	@Override
+	public Enveloppe getEnveloppe() {
+		EnveloppeBuilder builder = new EnveloppeBuilder();
+		for (Point point : points) {
+			builder.insert(point.getCoordinate());
+		}
+		
+		Enveloppe enveloppe = builder.build();
+		
+		return enveloppe;
 	}
 	
 }

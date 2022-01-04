@@ -23,14 +23,22 @@ public class PointTest {
 	}
 	
 	@Test
+	public void testGetCoordinate(){	
+		Coordinate c = new Coordinate(1.0,0.0);
+		Point p = new Point(c);
+		Assert.assertEquals(p.getCoordinate().getX(),1.0,EPSILON);
+		Assert.assertEquals(p.getCoordinate().getY(),0.0,EPSILON);
+	}
+	
+	@Test
 	public void testIsEmpty(){
 		Coordinate cEmpty = new Coordinate();
 		Point pEpmty = new Point(cEmpty);
-		Assert.assertEquals(pEpmty.isEmpty(),true);
+		Assert.assertEquals(pEpmty.getCoordinate().getX(),Double.NaN,EPSILON);
 		
 		Coordinate cFull = new Coordinate(0.0,0.0);
 		Point pFull = new Point(cFull);
-		Assert.assertEquals(pFull.isEmpty(),false);
+		Assert.assertEquals(pFull.getCoordinate().getX(),0.0,EPSILON);
 	}
 	
 	@Test
@@ -38,7 +46,7 @@ public class PointTest {
 		Coordinate c = new Coordinate(0.0,0.0);
 		Point p = new Point(c);
 		p.translate(1, 1);
-		Assert.assertEquals(p.isEmpty(),false);
+		Assert.assertEquals(p.getCoordinate().getX(),1.0,EPSILON);
 	}
 	
 	@Test

@@ -12,6 +12,10 @@ public class Point implements Geometry {
 		this.coordinate = coordinate;
 	}
 
+	public Coordinate getCoordinate() {
+		return coordinate;
+	}
+	
 	@Override
 	public String getType() {
 		return "Point";
@@ -36,6 +40,16 @@ public class Point implements Geometry {
 	@Override
 	public Point clone() {
 		return this;
+	}
+
+	@Override
+	public Enveloppe getEnveloppe() {
+		EnveloppeBuilder builder = new EnveloppeBuilder();
+		builder.insert(this.coordinate);
+		
+		Enveloppe enveloppe = builder.build();
+		
+		return enveloppe;
 	}
 	
 }

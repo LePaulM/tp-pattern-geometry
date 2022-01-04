@@ -50,7 +50,7 @@ public class PointTest {
 	}
 	
 	@Test
-	public void testPrototype(){
+	public void testClone(){
 		Coordinate c = new Coordinate(0.0,0.0);
 		Point p = new Point(c);
 		Geometry copy = p.clone();
@@ -58,5 +58,13 @@ public class PointTest {
 		p.translate(1, 1);
 		copy.translate(1, 1);
 		Assert.assertEquals(p,copy);
+	}
+	
+	@Test
+	public void testGetEnveloppe(){
+		Coordinate c = new Coordinate(0.0,0.0);
+		Point p = new Point(c);
+		Enveloppe result = p.getEnveloppe();
+		Assert.assertEquals(p.getCoordinate().getX(),result.getXMin(),EPSILON);
 	}
 }

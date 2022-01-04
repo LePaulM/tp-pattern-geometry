@@ -30,7 +30,7 @@ public class LineStringTest {
 	@Test
 	public void testConstructor(){
 		
-		List pts = new ArrayList<Point>();
+		List<Point> pts = new ArrayList<Point>();
 			
 		pts.add(p0);
 		pts.add(p1);
@@ -44,7 +44,7 @@ public class LineStringTest {
 	
 	@Test
 	public void testGetNumPoints(){
-		List pts = new ArrayList<Point>();
+		List<Point> pts = new ArrayList<Point>();
 		
 		pts.add(p0);
 		pts.add(p1);
@@ -58,7 +58,7 @@ public class LineStringTest {
 	
 	@Test
 	public void testGetPointN(){
-		List pts = new ArrayList<Point>();
+		List<Point> pts = new ArrayList<Point>();
 		
 		pts.add(p0);
 		pts.add(p1);
@@ -75,13 +75,13 @@ public class LineStringTest {
 
 		Coordinate cEmpty = new Coordinate();
 		Point pEpmty = new Point(cEmpty);
-		List ptsEmpty = new ArrayList<Point>();
+		List<Point> ptsEmpty = new ArrayList<Point>();
 		ptsEmpty.add(pEpmty);
 		LineString emptyLS = new LineString(ptsEmpty);
 		
 		Assert.assertEquals(true,emptyLS.isEmpty());
 		
-		List pts = new ArrayList<Point>();
+		List<Point> pts = new ArrayList<Point>();
 		
 		pts.add(p0);
 		pts.add(p1);
@@ -95,7 +95,7 @@ public class LineStringTest {
 	
 	@Test
 	public void testTranslate(){
-			List pts = new ArrayList<Point>();
+		List<Point> pts = new ArrayList<Point>();
 		
 		pts.add(p0);
 		pts.add(p1);
@@ -109,8 +109,8 @@ public class LineStringTest {
 	}
 	
 	@Test
-	public void testPrototype(){
-		List pts = new ArrayList<Point>();
+	public void testClone(){
+		List<Point> pts = new ArrayList<Point>();
 		
 		pts.add(p0);
 		pts.add(p1);
@@ -124,5 +124,28 @@ public class LineStringTest {
 		lS.translate(1, 1);
 		copy.translate(1, 1);
 		Assert.assertEquals(lS,copy);
+	}
+	
+	@Test
+	public void testGetEnveloppe(){
+		List<Point> pts = new ArrayList<Point>();
+		
+		pts.add(p0);
+		pts.add(p1);
+		pts.add(p2);
+		pts.add(p3);
+		
+		LineString lS = new LineString(pts);
+		
+		double xMin = 1000;
+		for (int i = 0; i<4;i++) {
+			if (lS.getPointN(i).getCoordinate().getX() < xMin) {
+				xMin = lS.getPointN(i).getCoordinate().getX();
+			}
+		}
+		
+		
+		Enveloppe result = lS.getEnveloppe();
+		Assert.assertEquals(xMin,result.getXMin(),EPSILON);
 	}
 }
